@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nền Galaxy Tình Yêu Xoay</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container xoay */
+    .galaxy {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(ellipse at center, #271b35 0%, #05050c 100%);
+      animation: rotateGalaxy 60s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes rotateGalaxy {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Ngôi sao */
+    .stars, .stars2, .stars3 {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: transparent;
+    }
+
+    .stars {
+      box-shadow: 100px 200px #fff, 300px 400px #fff, 500px 700px #fff,
+                  800px 300px #fff, 1200px 100px #fff, 900px 600px #fff;
+    }
+
+    .stars2 {
+      box-shadow: 150px 300px #ffb6c1, 600px 200px #fff, 1000px 500px #ff69b4,
+                  1300px 700px #fff, 400px 900px #ffccff, 700px 800px #fff;
+    }
+
+    .stars3 {
+      box-shadow: 200px 100px #fff, 500px 1200px #ff99cc, 900px 300px #fff,
+                  1400px 600px #ffb6c1, 800px 1100px #fff;
+    }
+    
+    .stars::after, .stars2::after, .stars3::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    /* Trái tim bay */
+    .heart {
+      position: absolute;
+      color: #ff6699;
+      font-size: 18px;
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nền galaxy xoay -->
+  <div class="galaxy">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+  </div>
+
+  <!-- Nhiều trái tim bay -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤</div>
+  <div class="heart" style="left:30%; animation-delay:2s;">❤</div>
+  <div class="heart" style="left:50%; animation-delay:4s;">❤</div>
+  <div class="heart" style="left:70%; animation-delay:1s;">❤</div>
+  <div class="heart" style="left:85%; animation-delay:3s;">❤</div>
+</body>
+</html>

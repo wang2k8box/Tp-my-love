@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang đăng nhập</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* iframe nền */
+    .background-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: -1; /* luôn nằm sau */
+    }
+  </style>
+
+  <!-- favicon mặc định (sẽ bị JS đổi liên tục) -->
+  <link rel="icon" type="image/png" href="capoo/00.png">
+</head>
+<body>
+  <div class="container">
+    <!-- nền riêng chạy từ bg.html -->
+    <iframe src="bg.html" class="background-frame"></iframe>
+
+    <!-- form login -->
+    <div class="glass-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="text" id="username" name="username" required placeholder="Username">
+          <input type="password" id="password" name="password" required placeholder="Password">
+          
+          <div class="options">
+            <label>
+              <input type="checkbox" id="remember" name="remember"> Remember me
+            </label>
+            <a href="#">Forgot Password?</a>
+          </div>
+          
+          <button type="submit">Login</button>
+          <p>Don't have an account? <a href="#" id="register">Register</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+// Xử lý login
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const password = document.getElementById("password").value;
+
+  // Danh sách mật khẩu hợp lệ
+  const validPasswords = ["06062009", "123456", "iloveyou", "matkhaukhac", "password", "01072008", "18042021", "phuonganh"];
+
+  if (validPasswords.includes(password)) {
+    window.location.href = "hehe/galaxy.html";
+  } else {
+    window.location.href = "reload.html"; // chuyển sang trang reload
+  }
+});
+
+    // Favicon động từ 19 ảnh capoo
+    const frames = [];
+    for (let i = 0; i < 20; i++) {
+      frames.push(`capoo/${String(i).padStart(2, '0')}.png`);
+    }
+
+    let idx = 0;
+    setInterval(() => {
+      let link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+      link.type = "image/png";
+      link.rel = "icon";
+      link.href = frames[idx];
+      document.head.appendChild(link);
+      idx = (idx + 1) % frames.length;
+    }, 75); // tốc độ đổi (ms)
+  </script>
+</body>
+</html>

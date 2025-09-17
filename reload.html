@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mật khẩu sai</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      font-size: 18px; 
+      line-height: 1.6;
+    }
+    #counter {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    let timeLeft = 5;
+    function startCountdown() {
+      const counter = document.getElementById("counter");
+      const interval = setInterval(() => {
+        timeLeft--;
+        counter.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          window.location.href = "index.html";
+        }
+      }, 1000);
+    }
+    window.onload = startCountdown;
+  </script>
+</head>
+<body>
+  <div>
+    <p>Có vẻ mật khẩu đang sai</p>
+    <p>Đăng nhập lại sau</p>
+    <p>Chuyển hướng trong <span id="counter">5</span> giây...</p>
+  </div>
+</body>
+</html>
