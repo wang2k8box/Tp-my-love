@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're my only one</title>
+
+  <!-- favicon mặc định -->
+  <link rel="icon" type="image/png" href="capoo/00.png">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- preload tất cả frame favicon để không bị giật -->
+  <link rel="preload" as="image" href="capoo/00.png">
+  <link rel="preload" as="image" href="capoo/01.png">
+  <link rel="preload" as="image" href="capoo/02.png">
+  <link rel="preload" as="image" href="capoo/03.png">
+  <link rel="preload" as="image" href="capoo/04.png">
+  <link rel="preload" as="image" href="capoo/05.png">
+  <link rel="preload" as="image" href="capoo/06.png">
+  <link rel="preload" as="image" href="capoo/07.png">
+  <link rel="preload" as="image" href="capoo/08.png">
+  <link rel="preload" as="image" href="capoo/09.png">
+  <link rel="preload" as="image" href="capoo/10.png">
+  <link rel="preload" as="image" href="capoo/11.png">
+  <link rel="preload" as="image" href="capoo/12.png">
+  <link rel="preload" as="image" href="capoo/13.png">
+  <link rel="preload" as="image" href="capoo/14.png">
+  <link rel="preload" as="image" href="capoo/15.png">
+  <link rel="preload" as="image" href="capoo/16.png">
+  <link rel="preload" as="image" href="capoo/17.png">
+  <link rel="preload" as="image" href="capoo/18.png">
+  <link rel="preload" as="image" href="capoo/19.png">
+
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+      "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js",
+      "three/examples/jsm/loaders/FontLoader.js": "https://unpkg.com/three@0.152.2/examples/jsm/loaders/FontLoader.js",
+      "three/examples/jsm/geometries/TextGeometry.js": "https://unpkg.com/three@0.152.2/examples/jsm/geometries/TextGeometry.js"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="" type="audio/mpeg" />
+  </audio>
+  <div id="container"></div>
+  <div id="landscape-warning">
+    <div class="warning-content">
+      <div class="rotate-icon"></div>
+      <h1>Stellar Bloom</h1>
+      <h1>Tinh Cầu</h1>
+      <div class="stars-bg"></div>
+    </div>
+  </div>
+  <div id="dark-overlay"></div>
+  <div id="info"></div>
+
+  <script type="module" src="script.js"></script>
+
+  <!-- script favicon động -->
+  <script>
+    const frames = [];
+    for (let i = 0; i < 20; i++) {
+      frames.push(`capoo/${String(i).padStart(2, '0')}.png`);
+    }
+
+    let idx = 0;
+    setInterval(() => {
+      let link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+      link.type = "image/png";
+      link.rel = "icon";
+      link.href = frames[idx];
+      document.head.appendChild(link);
+      idx = (idx + 1) % frames.length;
+    }, 75); // đổi mỗi 150ms
+  </script>
+</body>
+</html>
